@@ -5,16 +5,26 @@ VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaillierExt-Homomorphism", "PaillierExt-Homomorphism\PaillierExt-Homomorphism.csproj", "{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaillierHomoTests", "PaillierHomoTests\PaillierHomoTests.csproj", "{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Deploy PExt.Hom|Any CPU = Deploy PExt.Hom|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Deploy PExt.Hom|Any CPU.ActiveCfg = Deploy PExt.Hom|Any CPU
+		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Deploy PExt.Hom|Any CPU.Build.0 = Deploy PExt.Hom|Any CPU
 		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}.Deploy PExt.Hom|Any CPU.ActiveCfg = Deploy PExt.Hom|Any CPU
+		{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
