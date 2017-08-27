@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
-    <PackageVersion>0.9.5.0</PackageVersion>
+    <PackageVersion>0.10.0.0</PackageVersion>
     <Description>Extension for the .NET Framework cryptography subsystem, which introduces the Paillier public key cryptosystem with support for homomorphic addition.</Description>
     <Company>Nanyang Technological Unviersity</Company>
     <Product>PaillierExt.Homomorphism</Product>
