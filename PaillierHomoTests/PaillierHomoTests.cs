@@ -1,13 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Xunit;
 using PaillierExt.Homomorphism;
 
 namespace PaillierHomoTests
 {
-    [TestClass]
     public class PaillierHomoTests
     {
-        [TestMethod]
+        [Fact]
         public void TestZero()
         {
             byte[] p_first = { 0x01 };
@@ -17,7 +15,7 @@ namespace PaillierHomoTests
 
             var res = PaillierHomomorphism.Addition(p_first, p_second, p_NSquare);
 
-            Assert.AreEqual(expected[0], res[0]);
+            Assert.Equal(expected[0], res[0]);
         }
     }
 }
