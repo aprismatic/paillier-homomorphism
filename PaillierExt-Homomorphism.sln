@@ -1,11 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaillierExt-Homomorphism", "PaillierExt-Homomorphism\PaillierExt-Homomorphism.csproj", "{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaillierExt-Homomorphism", "PaillierExt-Homomorphism\PaillierExt-Homomorphism.csproj", "{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaillierHomoTests", "PaillierHomoTests\PaillierHomoTests.csproj", "{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaillierHomoTests", "PaillierHomoTests\PaillierHomoTests.csproj", "{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{46F3179B-0FB2-4DD5-AB09-3F7C7348185D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +31,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45E99427-C700-4EE1-9336-EA90DC1005F5}
 	EndGlobalSection
 EndGlobal
