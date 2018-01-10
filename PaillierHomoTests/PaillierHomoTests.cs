@@ -5,7 +5,7 @@ namespace PaillierHomoTests
 {
     public class PaillierHomoTests
     {
-        [Fact]
+        [Fact(DisplayName = "Zero")]
         public void TestZero()
         {
             byte[] p_first = { 0x01 };
