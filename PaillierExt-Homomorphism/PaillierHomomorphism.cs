@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace Aprismatic.Cryptography
+namespace Aprismatic.PaillierExt.Homomorphism
 {
     public static class PaillierHomomorphism
     {

@@ -6,6 +6,6 @@
     <Company>Nanyang Technological Unviersity</Company>
     <Product>PaillierExt-Homomorphism</Product>
     <Authors>Vasily Sidorov (bazzilic)</Authors>
-    <RootNamespace>Aprismatic.Cryptography</RootNamespace>
+    <RootNamespace>Aprismatic.PaillierExt</RootNamespace>
   </PropertyGroup>
 </Project>
