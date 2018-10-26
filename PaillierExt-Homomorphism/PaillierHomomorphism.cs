@@ -5,7 +5,7 @@ namespace Aprismatic.PaillierExt.Homomorphism
 {
     public static class PaillierHomomorphism
     {
-        public static byte[] Addition(byte[] first, byte[] second, byte[] NSquare)
+        public static byte[] Add(byte[] first, byte[] second, byte[] NSquare)
         {
             var firstActual = new byte[first.Length / 2];
             Array.Copy(first, firstActual, first.Length / 2);
@@ -26,7 +26,7 @@ namespace Aprismatic.PaillierExt.Homomorphism
             return add;
         }
 
-        public static byte[] Subtraction(byte[] first, byte[] second, byte[] NSquare)
+        public static byte[] Subtract(byte[] first, byte[] second, byte[] NSquare)
         {
             var firstActual = new byte[first.Length / 2];
             Array.Copy(first, firstActual, first.Length / 2);
