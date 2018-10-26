@@ -13,7 +13,7 @@ namespace PaillierHomoTests
             byte[] NSquare = { 10 };
             byte[] expected = { 3, 8 };
 
-            var res = PaillierHomomorphism.Addition(first, second, NSquare);
+            var res = PaillierHomomorphism.Add(first, second, NSquare);
 
             Assert.Equal(expected, res);
         }
@@ -26,7 +26,7 @@ namespace PaillierHomoTests
             byte[] NSquare = { 10 };
             byte[] expected = { 4, 6 };
 
-            var res = PaillierHomomorphism.Subtraction(first, second, NSquare);
+            var res = PaillierHomomorphism.Subtract(first, second, NSquare);
 
             Assert.Equal(expected, res);
         }
