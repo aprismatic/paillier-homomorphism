@@ -5,56 +5,56 @@ namespace Aprismatic.PaillierExt.Homomorphism
 {
     public static class PaillierHomomorphism
     {
-        public static byte[] Addition(byte[] p_first, byte[] p_second, byte[] p_NSquare)
+        public static byte[] Addition(byte[] first, byte[] second, byte[] NSquare)
         {
-            var p_first_actual = new byte[p_first.Length / 2];
-            Array.Copy(p_first, p_first_actual, p_first.Length / 2);
-            var p_first_negative = new byte[p_first.Length / 2];
-            Array.Copy(p_first, p_first.Length / 2, p_first_negative, 0, p_first.Length / 2);
-            var p_second_actual = new byte[p_second.Length / 2];
-            Array.Copy(p_second, p_second_actual, p_second.Length / 2);
-            var p_second_negative = new byte[p_second.Length / 2];
-            Array.Copy(p_second, p_second.Length / 2, p_second_negative, 0, p_second.Length / 2);
+            var firstActual = new byte[first.Length / 2];
+            Array.Copy(first, firstActual, first.Length / 2);
+            var firstNegative = new byte[first.Length / 2];
+            Array.Copy(first, first.Length / 2, firstNegative, 0, first.Length / 2);
+            var secondActual = new byte[second.Length / 2];
+            Array.Copy(second, secondActual, second.Length / 2);
+            var secondNegative = new byte[second.Length / 2];
+            Array.Copy(second, second.Length / 2, secondNegative, 0, second.Length / 2);
 
-            var add_actual = AddParts(p_first_actual, p_second_actual, p_NSquare);
-            var add_negative = AddParts(p_first_negative, p_second_negative, p_NSquare);
+            var addActual = AddParts(firstActual, secondActual, NSquare);
+            var addNegative = AddParts(firstNegative, secondNegative, NSquare);
 
-            var add = new byte[p_first.Length];
-            Array.Copy(add_actual, 0, add, 0, add_actual.Length);
-            Array.Copy(add_negative, 0, add, add.Length / 2, add_negative.Length);
+            var add = new byte[first.Length];
+            Array.Copy(addActual, 0, add, 0, addActual.Length);
+            Array.Copy(addNegative, 0, add, add.Length / 2, addNegative.Length);
 
             return add;
         }
 
-        public static byte[] Subtraction(byte[] p_first, byte[] p_second, byte[] p_NSquare)
+        public static byte[] Subtraction(byte[] first, byte[] second, byte[] NSquare)
         {
-            var p_first_actual = new byte[p_first.Length / 2];
-            Array.Copy(p_first, p_first_actual, p_first.Length / 2);
-            var p_first_negative = new byte[p_first.Length / 2];
-            Array.Copy(p_first, p_first.Length / 2, p_first_negative, 0, p_first.Length / 2);
-            var p_second_actual = new byte[p_second.Length / 2];
-            Array.Copy(p_second, p_second_actual, p_second.Length / 2);
-            var p_second_negative = new byte[p_second.Length / 2];
-            Array.Copy(p_second, p_second.Length / 2, p_second_negative, 0, p_second.Length / 2);
+            var firstActual = new byte[first.Length / 2];
+            Array.Copy(first, firstActual, first.Length / 2);
+            var firstNegative = new byte[first.Length / 2];
+            Array.Copy(first, first.Length / 2, firstNegative, 0, first.Length / 2);
+            var secondActual = new byte[second.Length / 2];
+            Array.Copy(second, secondActual, second.Length / 2);
+            var secondNegative = new byte[second.Length / 2];
+            Array.Copy(second, second.Length / 2, secondNegative, 0, second.Length / 2);
 
-            var add_actual = AddParts(p_first_actual, p_second_negative, p_NSquare);
-            var add_negative = AddParts(p_first_negative, p_second_actual, p_NSquare);
+            var subActual = AddParts(firstActual, secondNegative, NSquare);
+            var subNegative = AddParts(firstNegative, secondActual, NSquare);
 
-            var sub = new byte[p_first.Length];
-            Array.Copy(add_actual, 0, sub, 0, add_actual.Length);
-            Array.Copy(add_negative, 0, sub, sub.Length / 2, add_negative.Length);
+            var sub = new byte[first.Length];
+            Array.Copy(subActual, 0, sub, 0, subActual.Length);
+            Array.Copy(subNegative, 0, sub, sub.Length / 2, subNegative.Length);
 
             return sub;
         }
 
-        private static byte[] AddParts(byte[] p_first, byte[] p_second, byte[] p_NSquare)
+        private static byte[] AddParts(byte[] first, byte[] second, byte[] NSquare)
         {
-            var A = new BigInteger(p_first);
-            var B = new BigInteger(p_second);
-            var NSquare = new BigInteger(p_NSquare);
+            var A = new BigInteger(first);
+            var B = new BigInteger(second);
+            var NSquareBi = new BigInteger(NSquare);
 
-            var bi_res = (A * B) % NSquare;
-            var res = bi_res.ToByteArray();
+            var resBi = (A * B) % NSquareBi;
+            var res = resBi.ToByteArray();
             return res;
         }
     }

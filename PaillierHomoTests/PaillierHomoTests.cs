@@ -5,17 +5,30 @@ namespace PaillierHomoTests
 {
     public class PaillierHomoTests
     {
-        [Fact(DisplayName = "Zero")]
-        public void TestZero()
+        [Fact(DisplayName = "Addition")]
+        public void TestAddition()
         {
-            byte[] p_first = { 0x01, 0x01 };
-            byte[] p_second = { 0x01, 0x01 };
-            byte[] p_NSquare = { 0x01 };
-            byte[] expected = { 0x00 };
+            byte[] first = { 1, 2 };
+            byte[] second = { 3, 4 };
+            byte[] NSquare = { 10 };
+            byte[] expected = { 3, 8 };
 
-            var res = PaillierHomomorphism.Addition(p_first, p_second, p_NSquare);
+            var res = PaillierHomomorphism.Addition(first, second, NSquare);
 
-            Assert.Equal(expected[0], res[0]);
+            Assert.Equal(expected, res);
+        }
+
+        [Fact(DisplayName = "Subtraction")]
+        public void TestSubtraction()
+        {
+            byte[] first = { 1, 2 };
+            byte[] second = { 3, 4 };
+            byte[] NSquare = { 10 };
+            byte[] expected = { 4, 6 };
+
+            var res = PaillierHomomorphism.Subtraction(first, second, NSquare);
+
+            Assert.Equal(expected, res);
         }
     }
 }
