@@ -19,6 +19,7 @@ namespace Aprismatic.PaillierExt.Homomorphism
             var add_actual = AddParts(p_first_actual, p_second_actual, p_NSquare);
             var add_negative = AddParts(p_first_negative, p_second_negative, p_NSquare);
 
+            //p_first.Length is equals to p_second.Length
             var add = new byte[p_first.Length];
             Array.Copy(add_actual, 0, add, 0, add_actual.Length);
             Array.Copy(add_negative, 0, add, add.Length / 2, add_negative.Length);
