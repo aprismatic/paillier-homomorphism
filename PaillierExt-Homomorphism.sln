@@ -1,17 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaillierExt-Homomorphism", "PaillierExt-Homomorphism\PaillierExt-Homomorphism.csproj", "{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaillierHomoTests", "PaillierHomoTests\PaillierHomoTests.csproj", "{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{46F3179B-0FB2-4DD5-AB09-3F7C7348185D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A6502C7E-9F34-40F1-97D8-E6631867E613}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		appveyor.yml = appveyor.yml
+		Directory.Build.props = Directory.Build.props
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6E82EE2D-9243-4B59-9692-C8E23E56320B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{17A405E5-E5B7-4426-9C77-36D7B416C5FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aprismatic.PaillierExt.Homomorphism", "src\Aprismatic.PaillierExt.Homomorphism\Aprismatic.PaillierExt.Homomorphism.csproj", "{1C88C4DE-2866-4817-B0EE-9A7AA17542A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaillierHomoTests", "test\PaillierHomoTests\PaillierHomoTests.csproj", "{9A9AA8CA-110F-4C86-B89C-030E7C1E4945}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{160DA015-B344-4914-9CDD-854332F4DE16}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\check.yml = .github\workflows\check.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection
 EndProject
 Global
@@ -20,19 +32,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D10A159A-2B60-4DA4-B345-295E6E1B6AE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB4C08B8-DA9A-4BB2-9B49-E1E0E3F8DCFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C88C4DE-2866-4817-B0EE-9A7AA17542A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C88C4DE-2866-4817-B0EE-9A7AA17542A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C88C4DE-2866-4817-B0EE-9A7AA17542A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C88C4DE-2866-4817-B0EE-9A7AA17542A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A9AA8CA-110F-4C86-B89C-030E7C1E4945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A9AA8CA-110F-4C86-B89C-030E7C1E4945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A9AA8CA-110F-4C86-B89C-030E7C1E4945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A9AA8CA-110F-4C86-B89C-030E7C1E4945}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1C88C4DE-2866-4817-B0EE-9A7AA17542A6} = {6E82EE2D-9243-4B59-9692-C8E23E56320B}
+		{9A9AA8CA-110F-4C86-B89C-030E7C1E4945} = {17A405E5-E5B7-4426-9C77-36D7B416C5FC}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {45E99427-C700-4EE1-9336-EA90DC1005F5}
+		SolutionGuid = {195B4272-CCC0-4E18-9493-B553A147ECF3}
 	EndGlobalSection
 EndGlobal
