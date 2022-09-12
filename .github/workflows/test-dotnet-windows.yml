@@ -12,13 +12,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Add our github packages store as NuGet source
+    - name: Add github packages store as NuGet source
       run: |
         dotnet nuget update source github `
-                                --source https://nuget.pkg.github.com/aprismatic/index.json `
-                                --username ${{ secrets.GithubUsername }} `
-                                --password ${{ secrets.GithubToken }} `
-                                --configfile ./nuget.config
+                                   --source https://nuget.pkg.github.com/aprismatic/index.json `
+                                   --username ${{ secrets.GithubUsername }} `
+                                   --password ${{ secrets.GithubToken }} `
+                                   --configfile ./nuget.config
     - name: Restore packages
       run: dotnet restore
     - name: Build with dotnet
