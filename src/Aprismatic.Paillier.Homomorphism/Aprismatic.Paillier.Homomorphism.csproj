@@ -2,5 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.1;net45</TargetFrameworks>
     <Description>Extension for the .NET Framework cryptography subsystem, which introduces the Paillier public key cryptosystem with support for homomorphic addition.</Description>
+    <AssemblyName>Aprismatic.Paillier.Homomorphism</AssemblyName>
+    <RootNamespace>Aprismatic.Paillier.Homomorphism</RootNamespace>
   </PropertyGroup>
 </Project>

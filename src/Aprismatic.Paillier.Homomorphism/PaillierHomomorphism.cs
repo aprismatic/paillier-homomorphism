@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 
-namespace Aprismatic.PaillierExt.Homomorphism
+namespace Aprismatic.Paillier.Homomorphism
 {
     public static class PaillierHomomorphism
     {

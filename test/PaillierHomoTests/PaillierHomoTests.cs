@@ -1,5 +1,5 @@
 ﻿using Xunit;
-using Aprismatic.PaillierExt.Homomorphism;
+using Aprismatic.Paillier.Homomorphism;
 
 namespace PaillierHomoTests
 {
