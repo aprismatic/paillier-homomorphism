@@ -14,8 +14,8 @@ jobs:
       run: |
         dotnet nuget update source github `
                                    --source https://nuget.pkg.github.com/aprismatic/index.json `
-                                   --username ${{ secrets.GithubUsername }} `
-                                   --password ${{ secrets.GithubToken }} `
+                                   --username "${{ github.actor }}" `
+                                   --password "${{ github.token }}" `
                                    --configfile ./nuget.config
     - name: Restore packages
       run: dotnet restore
@@ -34,8 +34,8 @@ jobs:
       run: |
         dotnet nuget update source github `
                                    --source https://nuget.pkg.github.com/aprismatic/index.json `
-                                   --username ${{ secrets.GithubUsername }} `
-                                   --password ${{ secrets.GithubToken }} `
+                                   --username "${{ github.actor }}" `
+                                   --password "${{ github.token }}" `
                                    --configfile ./nuget.config
     - name: Restore packages
       run: dotnet restore
@@ -44,7 +44,7 @@ jobs:
     - name: Pack nuget packages
       run: dotnet pack --configuration Release --no-build --output nupkgs -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg -p:PackageVersion=${{ github.event.release.tag_name }}
     - name: Publish nuget packages
-      run: dotnet nuget push **/*.nupkg --source "github"
+      run: dotnet nuget push **/*.nupkg --source "github" --skip-duplicate
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
@@ -63,6 +63,6 @@ jobs:
     - name: Release artifacts
       uses: skx/github-action-publish-binaries@master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
       with:
         args: 'nupkgs/*'

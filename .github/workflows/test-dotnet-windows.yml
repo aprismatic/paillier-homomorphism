@@ -16,8 +16,8 @@ jobs:
       run: |
         dotnet nuget update source github `
                                    --source https://nuget.pkg.github.com/aprismatic/index.json `
-                                   --username ${{ secrets.GithubUsername }} `
-                                   --password ${{ secrets.GithubToken }} `
+                                   --username "${{ github.actor }}" `
+                                   --password "${{ github.token }}" `
                                    --configfile ./nuget.config
     - name: Restore packages
       run: dotnet restore
