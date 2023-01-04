@@ -9,7 +9,7 @@ namespace Aprismatic.Paillier.Homomorphism
     public static class PaillierHomomorphism
     {
         /// <summary>
-        /// Adds two encoded (i.e., supporting negatives through 2's complement) Paillier ciphertexts.
+        /// Adds two encoded (i.e., supporting negatives through 2's complement) Paillier ciphertexts (in the form of byte arrays).
         /// </summary>
         /// <param name="firstActual">First ciphertext, the 'original sign' half</param>
         /// <param name="firstNegative">First ciphertext, the 'negated sign' half</param>
@@ -24,12 +24,39 @@ namespace Aprismatic.Paillier.Homomorphism
             ReadOnlySpan<byte> NSquare,
             Span<byte> resultActual, Span<byte> resultNegative)
         {
-            AddIntegers(firstActual, secondActual, NSquare, resultActual);
-            AddIntegers(firstNegative, secondNegative, NSquare, resultNegative);
+            var firstActualBI = new BigInteger(firstActual);
+            var firstNegativeBI = new BigInteger(firstNegative);
+            var secondActualBI = new BigInteger(secondActual);
+            var secondNegativeBI = new BigInteger(secondNegative);
+            var NSquareBI = new BigInteger(NSquare);
+
+            var (resActualBI, resNegativeBI) = AddEncoded(firstActualBI, firstNegativeBI, secondActualBI, secondNegativeBI, NSquareBI);
+
+            resActualBI.TryWriteBytes(resultActual, out _);
+            resNegativeBI.TryWriteBytes(resultNegative, out _);
         }
 
         /// <summary>
-        /// Subtracts 2-complement encoded Paillier ciphertext `second` from `first`.
+        /// Adds two encoded (i.e., supporting negatives through 2's complement) Paillier ciphertexts (in the form of <see cref="BigInteger"/>s).
+        /// </summary>
+        /// <param name="firstActual">First ciphertext, the 'original sign' encryption</param>
+        /// <param name="firstNegative">First ciphertext, the 'negated sign' encryption</param>
+        /// <param name="secondActual">Second ciphertext, the 'original sign' encryption</param>
+        /// <param name="secondNegative">Second ciphertext, the 'negated sign' encryption</param>
+        /// <param name="NSquare">Part of the public key that is required for computation: N²</param>
+        /// <returns>A tuple of two BigInteger's containing an encryption of sum of originals and an encryption of sum of negated</returns>
+        public static (BigInteger, BigInteger) AddEncoded(
+            BigInteger firstActual, BigInteger firstNegative,
+            BigInteger secondActual, BigInteger secondNegative,
+            BigInteger NSquare)
+        {
+            var actual = AddIntegers(firstActual, secondActual, NSquare);
+            var negative = AddIntegers(firstNegative, secondNegative, NSquare);
+            return (actual, negative);
+        }
+
+        /// <summary>
+        /// Subtracts 2-complement encoded Paillier ciphertext `second` from `first` in the form of byte arrays.
         /// </summary>
         /// <param name="firstActual">First ciphertext, the 'original sign' half</param>
         /// <param name="firstNegative">First ciphertext, the 'negated sign' half</param>
@@ -44,8 +71,35 @@ namespace Aprismatic.Paillier.Homomorphism
             ReadOnlySpan<byte> NSquare,
             Span<byte> resultActual, Span<byte> resultNegative)
         {
-            AddIntegers(firstActual, secondNegative, NSquare, resultActual);
-            AddIntegers(firstNegative, secondActual, NSquare, resultNegative);
+            var firstActualBI = new BigInteger(firstActual);
+            var firstNegativeBI = new BigInteger(firstNegative);
+            var secondActualBI = new BigInteger(secondActual);
+            var secondNegativeBI = new BigInteger(secondNegative);
+            var NSquareBI = new BigInteger(NSquare);
+
+            var (resActualBI, resNegativeBI) = SubtractEncoded(firstActualBI, firstNegativeBI, secondActualBI, secondNegativeBI, NSquareBI);
+
+            resActualBI.TryWriteBytes(resultActual, out _);
+            resNegativeBI.TryWriteBytes(resultNegative, out _);
+        }
+
+        /// <summary>
+        /// Subtracts 2-complement encoded Paillier ciphertext `second` from `first` in the form of <see cref="BigInteger"/>s.
+        /// </summary>
+        /// <param name="firstActual">First ciphertext, the 'original sign' encryption</param>
+        /// <param name="firstNegative">First ciphertext, the 'negated sign' encryption</param>
+        /// <param name="secondActual">Second ciphertext, the 'original sign' encryption</param>
+        /// <param name="secondNegative">Second ciphertext, the 'negated sign' encryption</param>
+        /// <param name="NSquare">Part of the public key that is required for computation: N²</param>
+        /// <returns>A tuple of two BigInteger's containing an encryption (A-B) and an encryption of (-A+B)</returns>
+        public static (BigInteger, BigInteger) SubtractEncoded(
+            BigInteger firstActual, BigInteger firstNegative,
+            BigInteger secondActual, BigInteger secondNegative,
+            BigInteger NSquare)
+        {
+            var actual = AddIntegers(firstActual, secondNegative, NSquare);
+            var negative = AddIntegers(firstNegative, secondActual, NSquare);
+            return (actual, negative);
         }
 
         /// <summary>
