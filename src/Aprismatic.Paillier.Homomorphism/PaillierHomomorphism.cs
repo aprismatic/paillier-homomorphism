@@ -77,7 +77,9 @@ namespace Aprismatic.Paillier.Homomorphism
         /// <returns>BigInteger containing ciphertext of homomorphic sum of `first` and `second`</returns>
         public static BigInteger AddIntegers(
             BigInteger A, BigInteger B,
-            BigInteger NSquare) =>
-            (A * B) % NSquare;
+            BigInteger NSquare)
+        {
+            return (A * B) % NSquare;
+        }
     }
 }
